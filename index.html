@@ -3,22 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Aventuras Sociales con Mauricio - Fonoaudiología UCG</title>
+  <title>Aventuras Sociales con Mauricio - Escenas Animadas TEA</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
   <style>
     :root {
-      --bg-cream: #F8F5EE;
+      --bg-cream: #F5F2EA;
       --card-bg: #FFFFFF;
-      --primary: #2D5A52;
+      --primary: #1F4E46;
+      --primary-light: #E2EFEA;
       --secondary: #E07A5F;
-      --accent-blue: #3D7A8A;
-      --success: #2E7D32;
-      --success-bg: #E8F5E9;
-      --warning: #B26A00;
+      --accent-blue: #2B6CB0;
+      --success: #227038;
+      --success-bg: #E6F6EC;
+      --warning: #975A00;
       --warning-bg: #FFF8E1;
-      --text-dark: #1F2933;
-      --text-muted: #52606D;
-      --border: #D9E2EC;
+      --text-dark: #1E293B;
+      --text-muted: #475569;
+      --border: #CBD5E1;
     }
 
     * {
@@ -29,33 +30,144 @@
     }
 
     body {
-      background-color: var(--bg-cream);
+      background: linear-gradient(180deg, #F5F2EA 0%, #EAE5D9 100%);
       color: var(--text-dark);
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 16px;
+      padding: 14px;
+      overflow-x: hidden;
     }
+
+    /* Keyframes de animación cinematográfica suave */
+    @keyframes walkApproach {
+      0%, 100% { transform: translateX(0px) translateY(0px); }
+      25% { transform: translateX(10px) translateY(-4px); }
+      50% { transform: translateX(22px) translateY(0px); }
+      75% { transform: translateX(10px) translateY(-4px); }
+    }
+
+    @keyframes blockDrop {
+      0%, 100% { transform: translateY(0px); }
+      40% { transform: translateY(-16px); }
+      60% { transform: translateY(0px); }
+      75% { transform: translateY(-4px); }
+    }
+
+    @keyframes kickArc {
+      0% { transform: translate(0px, 0px) rotate(0deg); }
+      45% { transform: translate(65px, -45px) rotate(180deg); }
+      75% { transform: translate(115px, -10px) rotate(320deg); }
+      100% { transform: translate(0px, 0px) rotate(360deg); }
+    }
+
+    @keyframes netShake {
+      0%, 65%, 100% { transform: translateX(0); }
+      75% { transform: translateX(5px); }
+      85% { transform: translateX(-3px); }
+    }
+
+    @keyframes talkWave {
+      0%, 100% { transform: scale(1); opacity: 0.9; }
+      50% { transform: scale(1.08); opacity: 1; }
+    }
+
+    @keyframes signalBlink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.35; }
+    }
+
+    @keyframes floatSlow {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-8px); }
+    }
+
+    @keyframes spinTrophy {
+      0%, 100% { transform: rotate(-6deg) scale(1); }
+      50% { transform: rotate(6deg) scale(1.1); }
+    }
+
+    @keyframes celebrateJump {
+      0%, 100% { transform: translateY(0) scale(1); }
+      40% { transform: translateY(-16px) scale(1.08); }
+    }
+
+    @keyframes cloudDrift {
+      0%, 100% { transform: translateX(0px); }
+      50% { transform: translateX(18px); }
+    }
+
+    @keyframes slideUpFade {
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes popIn {
+      0% { opacity: 0; transform: scale(0.82); }
+      70% { transform: scale(1.04); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes gentleShake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-7px); }
+      75% { transform: translateX(7px); }
+    }
+
+    @keyframes confettiFall {
+      0% { transform: translateY(-20px) rotate(0deg) scale(1); opacity: 1; }
+      100% { transform: translateY(100vh) rotate(360deg) scale(0.8); opacity: 0; }
+    }
+
+    .anim-walk { animation: walkApproach 4.2s ease-in-out infinite; }
+    .anim-block { animation: blockDrop 2.6s ease-in-out infinite; }
+    .anim-kick { animation: kickArc 3.4s ease-in-out infinite; }
+    .anim-net { animation: netShake 3.4s ease-in-out infinite; }
+    .anim-talk { animation: talkWave 2s ease-in-out infinite; transform-origin: center; }
+    .anim-blink { animation: signalBlink 1.8s ease-in-out infinite; }
+    .anim-float { animation: floatSlow 3.2s ease-in-out infinite; }
+    .anim-trophy { animation: spinTrophy 2.5s ease-in-out infinite; transform-origin: center; }
+    .anim-cloud { animation: cloudDrift 7s ease-in-out infinite; }
+    .scene-solved .celebrate-target { animation: celebrateJump 0.9s ease-in-out infinite !important; }
 
     header {
       width: 100%;
-      max-width: 900px;
+      max-width: 980px;
       background: var(--card-bg);
-      border-radius: 18px;
-      padding: 16px 24px;
+      border-radius: 22px;
+      padding: 14px 22px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-      margin-bottom: 20px;
-      border-left: 8px solid var(--primary);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.07);
+      margin-bottom: 18px;
+      border-left: 10px solid var(--primary);
       flex-wrap: wrap;
       gap: 12px;
     }
 
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .avatar-badge {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--primary-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.1rem;
+      border: 3px solid var(--primary);
+      animation: floatSlow 3s ease-in-out infinite;
+    }
+
     .brand h1 {
-      font-size: 1.4rem;
+      font-size: 1.35rem;
       color: var(--primary);
     }
 
@@ -66,66 +178,73 @@
 
     .header-actions {
       display: flex;
+      align-items: center;
       gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .stars-bar {
+      background: #FFF9E6;
+      border: 2px solid #F6C344;
+      color: #8A5A00;
+      padding: 7px 14px;
+      border-radius: 20px;
+      font-weight: 700;
+      font-size: 0.95rem;
     }
 
     button {
       cursor: pointer;
       border: none;
-      border-radius: 12px;
+      border-radius: 14px;
       font-weight: 600;
-      transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.2s;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, background-color 0.2s;
     }
 
     button:active {
-      transform: scale(0.98);
+      transform: scale(0.96);
     }
 
     .btn-qr, .btn-home {
-      padding: 10px 16px;
+      padding: 10px 15px;
       font-size: 0.95rem;
       display: flex;
       align-items: center;
       gap: 6px;
     }
 
-    .btn-qr {
-      background-color: var(--accent-blue);
-      color: #fff;
-    }
-
-    .btn-home {
-      background-color: #E6ECEA;
-      color: var(--primary);
-    }
+    .btn-qr { background-color: var(--accent-blue); color: #fff; }
+    .btn-home { background-color: var(--primary-light); color: var(--primary); }
 
     main {
       width: 100%;
-      max-width: 900px;
+      max-width: 980px;
       background: var(--card-bg);
-      border-radius: 22px;
-      padding: 28px;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
+      border-radius: 24px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+      animation: slideUpFade 0.4s ease-out;
     }
 
     .audio-bar {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background: #EDF4F2;
+      background: #EAF4F1;
+      border: 2px solid #B7D8CE;
       padding: 14px 20px;
-      border-radius: 14px;
-      margin-bottom: 22px;
+      border-radius: 16px;
+      margin-bottom: 20px;
       gap: 16px;
       flex-wrap: wrap;
     }
 
     .audio-text {
-      font-size: 1.2rem;
+      font-size: 1.18rem;
       line-height: 1.5;
       color: var(--text-dark);
       flex: 1;
-      font-weight: 500;
+      font-weight: 600;
     }
 
     .btn-speak {
@@ -136,39 +255,53 @@
       display: flex;
       align-items: center;
       gap: 8px;
-      box-shadow: 0 3px 8px rgba(224, 122, 95, 0.35);
+      box-shadow: 0 4px 10px rgba(224, 122, 95, 0.35);
       white-space: nowrap;
     }
 
-    .btn-speak:hover {
-      background-color: #cf694d;
+    .btn-speak.speaking {
+      animation: talkWave 0.8s infinite;
+      background-color: #1F4E46;
     }
 
-    /* Menu Cards */
+    /* Map Grid */
+    .world-section {
+      margin-bottom: 24px;
+    }
+
+    .world-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.2rem;
+      color: var(--primary);
+      background: var(--primary-light);
+      padding: 10px 16px;
+      border-radius: 12px;
+      margin-bottom: 14px;
+    }
+
     .stories-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      margin-top: 10px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
     }
 
     .story-card {
       background: #FAFAF8;
       border: 2px solid var(--border);
       border-radius: 18px;
-      padding: 22px;
-      text-align: center;
+      padding: 18px;
       display: flex;
       flex-direction: column;
-      align-items: center;
       gap: 12px;
-      transition: all 0.2s ease;
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
     }
 
     .story-card:hover {
       border-color: var(--primary);
-      transform: translateY(-3px);
-      box-shadow: 0 8px 18px rgba(45, 90, 82, 0.12);
+      transform: translateY(-4px);
+      box-shadow: 0 10px 22px rgba(31, 78, 70, 0.14);
     }
 
     .story-card.completed {
@@ -176,25 +309,39 @@
       background: var(--success-bg);
     }
 
+    .card-top {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
     .story-icon {
-      width: 90px;
-      height: 90px;
-      border-radius: 50%;
+      width: 68px;
+      height: 68px;
+      border-radius: 16px;
       background: #E2ECE9;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 2.8rem;
+      font-size: 2.3rem;
+      flex-shrink: 0;
+      animation: floatSlow 3.5s ease-in-out infinite;
     }
 
-    .story-card h2 {
-      font-size: 1.25rem;
+    .story-card h3 {
+      font-size: 1.12rem;
       color: var(--primary);
+      margin-bottom: 4px;
     }
 
-    .story-card p {
-      font-size: 1rem;
-      color: var(--text-muted);
+    .skill-tag {
+      display: inline-block;
+      background: #E2E8F0;
+      color: #334155;
+      font-size: 0.82rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 10px;
     }
 
     .btn-start {
@@ -203,128 +350,227 @@
       padding: 12px;
       background: var(--primary);
       color: #fff;
-      font-size: 1.05rem;
+      font-size: 1rem;
     }
 
-    /* Scene View */
-    .scene-illustration {
-      width: 100%;
-      background: #F4F7F6;
+    /* Animated Visual Stage */
+    .visual-stage {
+      display: grid;
+      grid-template-columns: 1.35fr 1fr;
+      gap: 18px;
+      background: #F8FAFC;
+      border: 2px solid #CBD5E1;
+      border-radius: 20px;
+      padding: 16px;
+      margin-bottom: 20px;
+      align-items: center;
+      animation: popIn 0.45s ease-out;
+    }
+
+    @media (max-width: 760px) {
+      .visual-stage {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .scene-box {
+      background: #FFFFFF;
       border-radius: 16px;
-      padding: 20px;
-      margin-bottom: 22px;
+      padding: 8px;
+      border: 3px solid #D8E2EC;
+      box-shadow: inset 0 2px 8px rgba(0,0,0,0.04);
+      overflow: hidden;
+    }
+
+    .scene-box svg {
+      width: 100%;
+      max-height: 235px;
+      border-radius: 12px;
+      display: block;
+    }
+
+    .picto-panel {
       display: flex;
       flex-direction: column;
-      align-items: center;
-      border: 2px dashed #CBD5E1;
+      gap: 10px;
+    }
+
+    .picto-panel-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--primary);
+      text-align: center;
+      background: var(--primary-light);
+      padding: 7px;
+      border-radius: 10px;
     }
 
     .pictogram-strip {
-      display: flex;
-      gap: 18px;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin-top: 10px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
     }
 
     .picto-box {
       background: #fff;
       border: 2px solid var(--primary);
       border-radius: 14px;
-      padding: 12px 18px;
+      padding: 10px 6px;
       text-align: center;
-      min-width: 120px;
+      animation: popIn 0.5s ease-out both;
     }
 
-    .picto-box span {
-      font-size: 2.4rem;
+    .picto-box:nth-child(1) { animation-delay: 0.1s; }
+    .picto-box:nth-child(2) { animation-delay: 0.25s; }
+    .picto-box:nth-child(3) { animation-delay: 0.4s; }
+
+    .picto-step {
+      font-size: 0.72rem;
+      font-weight: 800;
+      color: #fff;
+      background: var(--secondary);
+      border-radius: 8px;
+      padding: 1px 6px;
+      display: inline-block;
+      margin-bottom: 4px;
+    }
+
+    .picto-box span.emoji {
+      font-size: 2.1rem;
       display: block;
-      margin-bottom: 6px;
+      margin-bottom: 4px;
+      animation: floatSlow 3s ease-in-out infinite;
     }
 
     .picto-box strong {
-      font-size: 0.95rem;
+      font-size: 0.84rem;
       color: var(--primary);
       display: block;
+      line-height: 1.2;
     }
 
+    /* Options */
     .options-list {
       display: flex;
       flex-direction: column;
-      gap: 14px;
+      gap: 12px;
     }
 
+    .option-row {
+      display: flex;
+      gap: 10px;
+      align-items: stretch;
+      animation: slideUpFade 0.45s ease-out both;
+    }
+
+    .option-row:nth-child(1) { animation-delay: 0.15s; }
+    .option-row:nth-child(2) { animation-delay: 0.28s; }
+    .option-row:nth-child(3) { animation-delay: 0.4s; }
+
     .option-btn {
-      width: 100%;
+      flex: 1;
       background: #FFFFFF;
       border: 2px solid var(--border);
       border-radius: 16px;
-      padding: 16px 20px;
+      padding: 14px 18px;
       display: flex;
       align-items: center;
-      gap: 16px;
+      gap: 14px;
       text-align: left;
-      font-size: 1.15rem;
+      font-size: 1.1rem;
       color: var(--text-dark);
     }
 
     .option-btn:hover {
       border-color: var(--accent-blue);
-      background: #F0F7F9;
+      background: #F0F8FF;
+      transform: translateX(5px);
     }
 
     .option-emoji {
-      font-size: 2.2rem;
+      font-size: 2.1rem;
       background: #F1F5F9;
-      padding: 10px;
+      padding: 8px;
       border-radius: 12px;
       flex-shrink: 0;
     }
 
+    .btn-opt-audio {
+      background: #E2E8F0;
+      color: var(--text-dark);
+      padding: 0 16px;
+      font-size: 1.3rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Feedback */
     .feedback-box {
-      margin-top: 22px;
-      padding: 20px;
+      margin-top: 20px;
+      padding: 18px;
       border-radius: 16px;
       display: none;
       align-items: center;
       gap: 16px;
-      font-size: 1.15rem;
+      font-size: 1.12rem;
       line-height: 1.5;
     }
 
     .feedback-box.success {
       display: flex;
       background: var(--success-bg);
-      border: 2px solid var(--success);
-      color: #1B5E20;
+      border: 3px solid var(--success);
+      color: #14532D;
+      animation: popIn 0.4s ease-out;
     }
 
     .feedback-box.retry {
       display: flex;
       background: var(--warning-bg);
-      border: 2px solid #F59E0B;
+      border: 3px solid #F59E0B;
       color: #78350F;
+      animation: gentleShake 0.45s ease-in-out;
     }
 
     .feedback-icon {
-      font-size: 2.8rem;
+      font-size: 3rem;
       flex-shrink: 0;
+      animation: celebrateJump 1.1s ease infinite;
     }
 
     .btn-next {
-      margin-top: 16px;
-      padding: 14px 24px;
+      margin-top: 12px;
+      padding: 12px 22px;
       background: var(--success);
       color: #fff;
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       display: none;
     }
 
-    /* QR Modal */
+    .diploma-box {
+      background: linear-gradient(135deg, #FFFBEB 0%, #E7F6EC 100%);
+      border: 3px solid #F59E0B;
+      border-radius: 20px;
+      padding: 24px;
+      text-align: center;
+      margin-bottom: 22px;
+      animation: popIn 0.6s ease-out;
+    }
+
+    .confetti-piece {
+      position: fixed;
+      top: -20px;
+      font-size: 1.9rem;
+      pointer-events: none;
+      z-index: 200;
+      animation: confettiFall 2.8s linear forwards;
+    }
+
     .modal-overlay {
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, 0.6);
+      background: rgba(0, 0, 0, 0.65);
       display: none;
       align-items: center;
       justify-content: center;
@@ -334,26 +580,18 @@
 
     .modal-content {
       background: #fff;
-      padding: 28px;
+      padding: 26px;
       border-radius: 20px;
       max-width: 380px;
       width: 100%;
       text-align: center;
+      animation: popIn 0.3s ease-out;
     }
 
     #qrcode {
       display: flex;
       justify-content: center;
-      margin: 20px 0;
-    }
-
-    .progress-badge {
-      background: #E6ECEA;
-      color: var(--primary);
-      padding: 6px 14px;
-      border-radius: 20px;
-      font-weight: 700;
-      font-size: 0.9rem;
+      margin: 18px 0;
     }
   </style>
 </head>
@@ -361,203 +599,533 @@
 
   <header>
     <div class="brand">
-      <h1>Aventuras Sociales con Mauricio</h1>
-      <p>Recurso Didáctico Adaptativo · Fonoaudiología UCG (Grupo # 4)</p>
+      <div class="avatar-badge">👦🏻</div>
+      <div>
+        <h1>Aventuras Sociales con Mauricio</h1>
+        <p>Escenas Animadas Interactivas · Fonoaudiología UCG (Grupo # 4)</p>
+      </div>
     </div>
     <div class="header-actions">
-      <span class="progress-badge" id="progressText">Estrellas: 0 / 3</span>
-      <button class="btn-home" onclick="showMenu()">🏠 Inicio</button>
+      <span class="stars-bar" id="progressText">⭐ Estrellas: 0 / 6</span>
+      <button class="btn-home" onclick="showMenu()">🏠 Mapa</button>
       <button class="btn-qr" onclick="openQR()">📱 Código QR</button>
     </div>
   </header>
 
-  <main id="appContainer">
-    <!-- Contenido dinámico -->
-  </main>
+  <main id="appContainer"></main>
 
-  <!-- Modal Código QR -->
   <div class="modal-overlay" id="qrModal" onclick="closeQR(event)">
     <div class="modal-content" onclick="event.stopPropagation()">
-      <h2 style="color: var(--primary); margin-bottom: 8px;">Acceso Interactivo</h2>
+      <h2 style="color: var(--primary); margin-bottom: 6px;">Escanea y Participa</h2>
       <p style="color: var(--text-muted); font-size: 0.95rem;">
-        Escanea este código con la cámara de tu celular para abrir las Historias Sociales.
+        Abre la cámara de tu celular y apunta al código QR para ingresar a las 6 historias sociales animadas.
       </p>
       <div id="qrcode"></div>
-      <button class="btn-start" onclick="document.getElementById('qrModal').style.display='none'">Cerrar</button>
+      <button class="btn-start" onclick="document.getElementById('qrModal').style.display='none'">Cerrar ventana</button>
     </div>
   </div>
 
   <script>
-    const stories = [
+    const scenesSVG = {
+      blocks: `<svg id="activeSceneSVG" viewBox="0 0 420 230" xmlns="http://www.w3.org/2000/svg">
+        <rect width="420" height="155" fill="#BAE6FD"/>
+        <rect y="155" width="420" height="75" fill="#86EFAC"/>
+        <circle cx="365" cy="40" r="22" fill="#FDE047" class="anim-talk"/>
+        <g class="anim-cloud">
+          <ellipse cx="90" cy="38" rx="30" ry="12" fill="#FFFFFF" opacity="0.92"/>
+          <ellipse cx="115" cy="34" rx="22" ry="10" fill="#FFFFFF" opacity="0.92"/>
+        </g>
+        <!-- Mesa y torre de bloques animada -->
+        <rect x="175" y="135" width="150" height="45" rx="8" fill="#D97706"/>
+        <rect x="225" y="107" width="24" height="28" fill="#EF4444" stroke="#fff" stroke-width="2"/>
+        <rect x="251" y="107" width="24" height="28" fill="#3B82F6" stroke="#fff" stroke-width="2"/>
+        <rect x="238" y="79" width="24" height="28" fill="#FACC15" stroke="#fff" stroke-width="2" class="anim-block"/>
+        <!-- Amigos -->
+        <g class="celebrate-target">
+          <circle cx="195" cy="100" r="18" fill="#FDBA74"/>
+          <text x="195" y="106" font-size="18" text-anchor="middle">😄</text>
+        </g>
+        <g class="celebrate-target">
+          <circle cx="305" cy="100" r="18" fill="#FDBA74"/>
+          <text x="305" y="106" font-size="18" text-anchor="middle">😊</text>
+        </g>
+        <!-- Mauricio acercándose -->
+        <g class="anim-walk celebrate-target">
+          <circle cx="65" cy="112" r="21" fill="#FED7AA" stroke="#1F4E46" stroke-width="3"/>
+          <text x="65" y="119" font-size="21" text-anchor="middle">🙂</text>
+          <rect x="35" y="137" width="60" height="18" rx="8" fill="#1F4E46"/>
+          <text x="65" y="150" font-size="11" font-weight="bold" fill="#FFFFFF" text-anchor="middle">Mauricio</text>
+        </g>
+      </svg>`,
+
+      ball: `<svg id="activeSceneSVG" viewBox="0 0 420 230" xmlns="http://www.w3.org/2000/svg">
+        <rect width="420" height="150" fill="#E0F2FE"/>
+        <rect y="150" width="420" height="80" fill="#4ADE80"/>
+        <g class="anim-cloud">
+          <ellipse cx="85" cy="36" rx="30" ry="12" fill="#FFFFFF" opacity="0.9"/>
+        </g>
+        <!-- Arco de fútbol con vibración -->
+        <g class="anim-net">
+          <rect x="305" y="75" width="85" height="75" fill="rgba(255,255,255,0.25)" stroke="#FFFFFF" stroke-width="5"/>
+          <line x1="330" y1="75" x2="330" y2="150" stroke="#fff" stroke-width="1.5" stroke-dasharray="4 4"/>
+          <line x1="360" y1="75" x2="360" y2="150" stroke="#fff" stroke-width="1.5" stroke-dasharray="4 4"/>
+        </g>
+        <!-- Compañero y balón en parábola -->
+        <circle cx="185" cy="110" r="20" fill="#FDBA74"/>
+        <text x="185" y="117" font-size="20" text-anchor="middle">😃</text>
+        <text x="205" y="146" font-size="26" class="anim-kick">⚽</text>
+        <!-- Mauricio esperando turno -->
+        <g class="anim-float celebrate-target">
+          <circle cx="80" cy="112" r="21" fill="#FED7AA" stroke="#1F4E46" stroke-width="3"/>
+          <text x="80" y="119" font-size="21" text-anchor="middle">🙋‍♂️</text>
+          <rect x="50" y="137" width="60" height="18" rx="8" fill="#1F4E46"/>
+          <text x="80" y="150" font-size="11" font-weight="bold" fill="#FFFFFF" text-anchor="middle">Mauricio</text>
+        </g>
+      </svg>`,
+
+      classTurn: `<svg id="activeSceneSVG" viewBox="0 0 420 230" xmlns="http://www.w3.org/2000/svg">
+        <rect width="420" height="230" fill="#FEF3C7"/>
+        <!-- Pizarra -->
+        <rect x="95" y="18" width="215" height="88" rx="10" fill="#14532D" stroke="#92400E" stroke-width="6"/>
+        <text x="202" y="66" font-size="16" fill="#FFFFFF" text-anchor="middle" class="anim-talk">🐶 Animales Favoritos 🐱</text>
+        <!-- Semáforo visual de turno en aula -->
+        <rect x="345" y="22" width="44" height="92" rx="12" fill="#1E293B"/>
+        <circle cx="367" cy="48" r="12" fill="#F59E0B" class="anim-blink"/>
+        <circle cx="367" cy="86" r="12" fill="#22C55E" opacity="0.35"/>
+        <!-- Profesora -->
+        <circle cx="55" cy="85" r="20" fill="#FDBA74"/>
+        <text x="55" y="92" font-size="20" text-anchor="middle">👩‍🏫</text>
+        <!-- Camila hablando -->
+        <circle cx="155" cy="160" r="20" fill="#FDBA74"/>
+        <text x="155" y="167" font-size="20" text-anchor="middle">👧🏻</text>
+        <g class="anim-talk">
+          <rect x="178" y="128" width="90" height="30" rx="10" fill="#FFFFFF" stroke="#2B6CB0" stroke-width="2"/>
+          <text x="223" y="147" font-size="12" font-weight="bold" text-anchor="middle">💬 Mi gato...</text>
+        </g>
+        <!-- Mauricio -->
+        <g class="celebrate-target">
+          <circle cx="325" cy="160" r="21" fill="#FED7AA" stroke="#1F4E46" stroke-width="3"/>
+          <text x="325" y="167" font-size="21" text-anchor="middle">👦🏻</text>
+          <rect x="295" y="185" width="60" height="18" rx="8" fill="#1F4E46"/>
+          <text x="325" y="198" font-size="11" font-weight="bold" fill="#FFFFFF" text-anchor="middle">Mauricio</text>
+        </g>
+      </svg>`,
+
+      classHelp: `<svg id="activeSceneSVG" viewBox="0 0 420 230" xmlns="http://www.w3.org/2000/svg">
+        <rect width="420" height="230" fill="#F1F5F9"/>
+        <!-- Pupitre y cuaderno -->
+        <rect x="120" y="148" width="180" height="52" rx="10" fill="#B45309"/>
+        <rect x="172" y="126" width="76" height="24" rx="4" fill="#FFFFFF" stroke="#64748B" stroke-width="2"/>
+        <!-- Mauricio pensando con iconos animados -->
+        <g class="celebrate-target">
+          <circle cx="210" cy="86" r="25" fill="#FED7AA" stroke="#1F4E46" stroke-width="3"/>
+          <text x="210" y="94" font-size="25" text-anchor="middle">🤔</text>
+        </g>
+        <text x="256" y="65" font-size="30" class="anim-float">❓</text>
+        <text x="148" y="68" font-size="26" class="anim-talk">💡</text>
+        <text x="210" y="180" font-size="13" font-weight="bold" fill="#FFFFFF" text-anchor="middle">Cuaderno de 4.º EGB</text>
+      </svg>`,
+
+      brotherGoal: `<svg id="activeSceneSVG" viewBox="0 0 420 230" xmlns="http://www.w3.org/2000/svg">
+        <rect width="420" height="230" fill="#FFEDD5"/>
+        <rect x="40" y="130" width="340" height="68" rx="16" fill="#0F766E"/>
+        <!-- Hermano mayor con trofeo animado -->
+        <g class="celebrate-target">
+          <circle cx="145" cy="96" r="24" fill="#FDBA74"/>
+          <text x="145" y="104" font-size="24" text-anchor="middle">🧑🏻</text>
+        </g>
+        <text x="192" y="92" font-size="30" class="anim-trophy">🏆</text>
+        <g class="anim-talk">
+          <rect x="75" y="30" width="160" height="34" rx="12" fill="#FFFFFF" stroke="#E07A5F" stroke-width="2.5"/>
+          <text x="155" y="51" font-size="13" font-weight="bold" text-anchor="middle">¡Hoy metí un gol!</text>
+        </g>
+        <!-- Mauricio -->
+        <g class="celebrate-target">
+          <circle cx="285" cy="96" r="24" fill="#FED7AA" stroke="#1F4E46" stroke-width="3"/>
+          <text x="285" y="104" font-size="24" text-anchor="middle">👦🏻</text>
+        </g>
+      </svg>`,
+
+      momTired: `<svg id="activeSceneSVG" viewBox="0 0 420 230" xmlns="http://www.w3.org/2000/svg">
+        <rect width="420" height="230" fill="#EDE9FE"/>
+        <rect x="45" y="130" width="330" height="68" rx="16" fill="#6D28D9"/>
+        <!-- Mamá cansada -->
+        <circle cx="145" cy="96" r="24" fill="#FDBA74"/>
+        <text x="145" y="104" font-size="24" text-anchor="middle">👩🏻</text>
+        <g class="anim-float">
+          <rect x="78" y="32" width="150" height="32" rx="12" fill="#FFFFFF" stroke="#7C3AED" stroke-width="2"/>
+          <text x="153" y="52" font-size="13" font-weight="bold" text-anchor="middle">😓 Qué día tan largo...</text>
+        </g>
+        <!-- Mauricio acercándose con empatía -->
+        <g class="anim-float celebrate-target">
+          <circle cx="285" cy="96" r="24" fill="#FED7AA" stroke="#1F4E46" stroke-width="3"/>
+          <text x="285" y="104" font-size="24" text-anchor="middle">👦🏻</text>
+        </g>
+      </svg>`
+    };
+
+    const worlds = [
       {
-        id: 0,
-        title: "1. Quiero jugar en el recreo",
-        skill: "Iniciación conversacional",
-        icon: "🧱",
-        pictograms: [
-          { emoji: "👀", label: "Mirar amigos" },
-          { emoji: "👋", label: "Saludar" },
-          { emoji: "🗣️", label: "Pedir jugar" }
-        ],
-        prompt: "En el recreo, Mateo y Sofía arman una torre con bloques. Mauricio quiere jugar con ellos. ¿Qué puede hacer Mauricio?",
-        options: [
+        title: "🏫 Mundo 1: El Recreo Escolar",
+        activities: [
           {
-            emoji: "😤",
-            text: "Quitarles los bloques de la mesa sin decir nada.",
-            correct: false,
-            feedback: "Si tomamos los bloques sin pedir permiso, los compañeros se pueden molestar. Intentemos otra forma amable."
+            id: 0,
+            title: "1.1 Quiero jugar con bloques",
+            skill: "Iniciación conversacional",
+            icon: "🧱",
+            svg: scenesSVG.blocks,
+            pictograms: [
+              { emoji: "👀", label: "Mirar amigos" },
+              { emoji: "👋", label: "Saludar" },
+              { emoji: "🗣️", label: "Pedir jugar" }
+            ],
+            prompt: "En el recreo, Mateo y Sofía arman una torre con bloques. Mauricio quiere jugar con ellos. ¿Qué puede hacer Mauricio?",
+            options: [
+              {
+                emoji: "😤",
+                text: "Quitarles los bloques de la mesa sin decir nada.",
+                correct: false,
+                feedback: "Si tomamos los bloques sin pedir permiso, los compañeros se pueden molestar. Intentemos otra forma amable."
+              },
+              {
+                emoji: "😊",
+                text: "Acercarse, sonreír y decir: Hola, ¿puedo jugar con ustedes?",
+                correct: true,
+                feedback: "¡Excelente! Saludar y preguntar con amabilidad ayuda a que tus amigos te inviten a jugar."
+              },
+              {
+                emoji: "🧍",
+                text: "Quedarse lejos mirando en silencio sin acercarse.",
+                correct: false,
+                feedback: "Si nos quedamos lejos en silencio, ellos no sabrán que quieres jugar. ¡Inténtalo de nuevo!"
+              }
+            ]
           },
           {
-            emoji: "😊",
-            text: "Acercarse, sonreír y decir: Hola, ¿puedo jugar con ustedes?",
-            correct: true,
-            feedback: "¡Excelente! Saludar y preguntar con amabilidad ayuda a que tus amigos te inviten a jugar."
-          },
-          {
-            emoji: "🧍",
-            text: "Quedarse lejos mirando en silencio sin acercarse.",
-            correct: false,
-            feedback: "Si nos quedamos lejos en silencio, ellos no sabrán que quieres jugar. ¡Inténtalo de nuevo!"
+            id: 1,
+            title: "1.2 Compartimos la pelota",
+            skill: "Petición de objetos",
+            icon: "⚽",
+            svg: scenesSVG.ball,
+            pictograms: [
+              { emoji: "🚶", label: "Acercarse" },
+              { emoji: "🙏", label: "Pedir por favor" },
+              { emoji: "⏳", label: "Esperar turno" }
+            ],
+            prompt: "En el patio, un compañero patea la pelota al arco. Mauricio también quiere patear. ¿Cómo debe pedir la pelota?",
+            options: [
+              {
+                emoji: "😠",
+                text: "Empujar al compañero para quitarle la pelota rápido.",
+                correct: false,
+                feedback: "Empujar puede lastimar a nuestro amigo. Mejor usamos palabras amables para pedir turno."
+              },
+              {
+                emoji: "🗣️",
+                text: "Decir: Por favor, ¿me prestas la pelota cuando termines?",
+                correct: true,
+                feedback: "¡Muy bien! Pedir por favor y esperar tu turno hace que todos disfruten el juego."
+              },
+              {
+                emoji: "😭",
+                text: "Gritar fuerte desde lejos sin acercarse a hablar.",
+                correct: false,
+                feedback: "Gritar desde lejos asusta a los compañeros. Acércate y habla con voz tranquila."
+              }
+            ]
           }
         ]
       },
       {
-        id: 1,
-        title: "2. Mi turno para hablar en clase",
-        skill: "Respeto de turnos",
-        icon: "🏫",
-        pictograms: [
-          { emoji: "👂", label: "Escuchar" },
-          { emoji: "✋", label: "Levantar mano" },
-          { emoji: "⏳", label: "Esperar turno" }
-        ],
-        prompt: "La profesora hace una pregunta. Camila está hablando en este momento. ¿Qué debe hacer Mauricio?",
-        options: [
+        title: "📚 Mundo 2: El Aula de 4.º de EGB",
+        activities: [
           {
-            emoji: "🗣️",
-            text: "Hablar en voz alta encima de Camila para contar su historia primero.",
-            correct: false,
-            feedback: "Cuando un compañero habla, nuestros oídos escuchan y nuestra boca espera. Levanta la mano y espera tu turno."
+            id: 2,
+            title: "2.1 Mi turno para hablar en clase",
+            skill: "Respeto de turnos",
+            icon: "✋",
+            svg: scenesSVG.classTurn,
+            pictograms: [
+              { emoji: "👂", label: "Oídos escuchan" },
+              { emoji: "✋", label: "Levantar mano" },
+              { emoji: "⏳", label: "Esperar turno" }
+            ],
+            prompt: "La profesora pregunta sobre los animales favoritos. Camila está hablando ahora. ¿Qué debe hacer Mauricio?",
+            options: [
+              {
+                emoji: "🗣️",
+                text: "Hablar en voz alta encima de Camila para contar primero.",
+                correct: false,
+                feedback: "Cuando un compañero habla, nuestros oídos escuchan y nuestra boca espera. Levanta la mano."
+              },
+              {
+                emoji: "🙋‍♂️",
+                text: "Escuchar en silencio y levantar la mano esperando su turno.",
+                correct: true,
+                feedback: "¡Fantástico! Escuchar al compañero y levantar la mano permite que todos nos entendamos."
+              },
+              {
+                emoji: "🚶‍♂️",
+                text: "Levantarse del puesto y caminar por el aula.",
+                correct: false,
+                feedback: "Permanecemos en nuestro puesto atentos mientras los compañeros participan. ¡Inténtalo otra vez!"
+              }
+            ]
           },
           {
-            emoji: "🙋‍♂️",
-            text: "Escuchar en silencio, levantar la mano y esperar a que la profesora le dé el turno.",
-            correct: true,
-            feedback: "¡Muy bien! Escuchar al compañero y levantar la mano permite que todos nos entendamos en clase."
-          },
-          {
-            emoji: "🚶‍♂️",
-            text: "Levantarse de su puesto y caminar por el aula mientras Camila habla.",
-            correct: false,
-            feedback: "Es importante permanecer atentos en el puesto mientras alguien participa. ¡Probemos otra opción!"
+            id: 3,
+            title: "2.2 Pedir ayuda con la tarea",
+            skill: "Solicitud de aclaración",
+            icon: "❓",
+            svg: scenesSVG.classHelp,
+            pictograms: [
+              { emoji: "📖", label: "Mirar tarea" },
+              { emoji: "✋", label: "Levantar mano" },
+              { emoji: "💬", label: "Pedir ayuda" }
+            ],
+            prompt: "Mauricio no entiende una instrucción larga de la tarea en su cuaderno. ¿Qué puede hacer para resolverlo?",
+            options: [
+              {
+                emoji: "🙋‍♂️",
+                text: "Levantar la mano y decir: Profesora, ¿me puede explicar otra vez?",
+                correct: true,
+                feedback: "¡Excelente decisión! Pedir ayuda cuando algo no está claro demuestra mucha seguridad."
+              },
+              {
+                emoji: "🙈",
+                text: "Esconder el cuaderno debajo de la mesa y no hacer nada.",
+                correct: false,
+                feedback: "Si escondemos el cuaderno, la profesora no sabrá que necesitamos ayuda. ¡Levanta la mano!"
+              },
+              {
+                emoji: "😤",
+                text: "Arrugar la hoja del cuaderno porque es difícil.",
+                correct: false,
+                feedback: "Cuidamos nuestros materiales. Cuando una tarea es difícil, pedimos explicación paso a paso."
+              }
+            ]
           }
         ]
       },
       {
-        id: 2,
-        title: "3. Conversando con mi hermano",
-        skill: "Mantenimiento del tópico",
-        icon: "⚽",
-        pictograms: [
-          { emoji: "👁️", label: "Mirar a los ojos" },
-          { emoji: "💬", label: "Escuchar noticia" },
-          { emoji: "❓", label: "Hacer pregunta" }
-        ],
-        prompt: "En casa, tu hermano mayor te dice emocionado: ¡Hoy metí un gol en el partido! ¿Qué le puedes responder para seguir conversando?",
-        options: [
+        title: "🏡 Mundo 3: Mi Hogar y Familia",
+        activities: [
           {
-            emoji: "🤩",
-            text: "Mirarlo y decir: ¡Qué genial! ¿Cómo metiste el gol?",
-            correct: true,
-            feedback: "¡Fantástico! Hacer una pregunta sobre lo que dijo tu hermano mantiene una conversación divertida."
+            id: 4,
+            title: "3.1 El gol de mi hermano mayor",
+            skill: "Mantenimiento del tópico",
+            icon: "🏆",
+            svg: scenesSVG.brotherGoal,
+            pictograms: [
+              { emoji: "👁️", label: "Mirar rostro" },
+              { emoji: "👂", label: "Escuchar" },
+              { emoji: "❓", label: "Hacer pregunta" }
+            ],
+            prompt: "En casa, tu hermano mayor te dice muy feliz: ¡Hoy metí un gol en el partido! ¿Qué le puedes responder?",
+            options: [
+              {
+                emoji: "🤩",
+                text: "Mirarlo y decir: ¡Qué genial! ¿Cómo metiste el gol?",
+                correct: true,
+                feedback: "¡Genial! Hacer una pregunta sobre lo que dijo tu hermano mantiene una conversación alegre."
+              },
+              {
+                emoji: "📺",
+                text: "No responder nada y seguir mirando la televisión.",
+                correct: false,
+                feedback: "Cuando alguien nos cuenta algo importante, mirarlo y responder demuestra cariño e interés."
+              },
+              {
+                emoji: "🦕",
+                text: "Darle la espalda y hablar de dinosaurios sin responderle.",
+                correct: false,
+                feedback: "Primero respondemos sobre el gol de tu hermano y después puedes contarle tu tema."
+              }
+            ]
           },
           {
-            emoji: "📺",
-            text: "No responder nada y seguir viendo la televisión.",
-            correct: false,
-            feedback: "Cuando alguien nos cuenta algo importante, mirarlo y responder demuestra interés. ¡Intentemos otra vez!"
-          },
-          {
-            emoji: "🦕",
-            text: "Darle la espalda y empezar a hablar de otro tema sin responderle.",
-            correct: false,
-            feedback: "Primero respondemos sobre lo que nos contó nuestro hermano y luego podemos cambiar de tema. ¡Tú puedes!"
+            id: 5,
+            title: "3.2 Mamá está cansada del trabajo",
+            skill: "Empatía y lectura emocional",
+            icon: "💜",
+            svg: scenesSVG.momTired,
+            pictograms: [
+              { emoji: "👀", label: "Observar rostro" },
+              { emoji: "❤️", label: "Comprender" },
+              { emoji: "🤫", label: "Hablar suave" }
+            ],
+            prompt: "Mamá llega del trabajo, se sienta en el sofá y suspira porque está cansada. ¿Qué puede hacer Mauricio?",
+            options: [
+              {
+                emoji: "📢",
+                text: "Gritar muy fuerte pidiendo que le arreglen un juguete ya.",
+                correct: false,
+                feedback: "Cuando mamá está cansada, los gritos fuertes la agotan más. Mejor usamos una voz suave."
+              },
+              {
+                emoji: "🤗",
+                text: "Acercarse despacio y decir: Hola mamá, ¿quieres descansar un ratito?",
+                correct: true,
+                feedback: "¡Maravilloso! Observar cómo se sienten los demás y hablar con cariño te convierte en un gran comunicador."
+              },
+              {
+                emoji: "🥁",
+                text: "Golpear la mesa haciendo mucho ruido al lado del sofá.",
+                correct: false,
+                feedback: "Si alguien necesita descansar, cuidamos el silencio alrededor. ¡Probemos la respuesta amable!"
+              }
+            ]
           }
         ]
       }
     ];
 
-    let completedStories = new Set();
+    const allActivities = worlds.flatMap(w => w.activities);
+    let completedSet = new Set();
 
-    function speak(text) {
+    // Efectos sonoros suaves (Web Audio API sin archivos externos)
+    function playChime(isSuccess) {
+      try {
+        const ctx = new (window.AudioContext || window.webkitAudioContext)();
+        const now = ctx.currentTime;
+        const notes = isSuccess ? [523.25, 659.25, 783.99, 1046.5] : [392.00, 349.23];
+        notes.forEach((freq, i) => {
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(freq, now + i * 0.12);
+          gain.gain.setValueAtTime(0.12, now + i * 0.12);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + i * 0.12 + 0.35);
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+          osc.start(now + i * 0.12);
+          osc.stop(now + i * 0.12 + 0.36);
+        });
+      } catch (e) {}
+    }
+
+    function speak(text, btnElement = null) {
       if ('speechSynthesis' in window) {
         window.speechSynthesis.cancel();
-        const utterance = new SpeechSynthesisUtterance(text);
-        utterance.lang = 'es-ES';
-        utterance.rate = 0.92;
-        window.speechSynthesis.speak(utterance);
+        document.querySelectorAll('.speaking').forEach(b => b.classList.remove('speaking'));
+        const u = new SpeechSynthesisUtterance(text);
+        u.lang = 'es-ES';
+        u.rate = 0.92;
+        if (btnElement) {
+          btnElement.classList.add('speaking');
+          u.onend = () => btnElement.classList.remove('speaking');
+        }
+        window.speechSynthesis.speak(u);
       }
     }
 
-    function updateProgress() {
-      document.getElementById('progressText').textContent = `Estrellas: ${completedStories.size} / ${stories.length}`;
+    function launchCelebration() {
+      const symbols = ['⭐', '🌟', '🎉', '✨', '🎊'];
+      for (let i = 0; i < 20; i++) {
+        const piece = document.createElement('div');
+        piece.className = 'confetti-piece';
+        piece.textContent = symbols[i % symbols.length];
+        piece.style.left = Math.random() * 94 + 'vw';
+        piece.style.animationDuration = (2 + Math.random() * 1.4) + 's';
+        document.body.appendChild(piece);
+        setTimeout(() => piece.remove(), 3500);
+      }
+    }
+
+    function updateHeader() {
+      document.getElementById('progressText').textContent = `⭐ Estrellas: ${completedSet.size} / ${allActivities.length}`;
     }
 
     function showMenu() {
-      window.speechSynthesis && window.speechSynthesis.cancel();
-      const welcomeText = "Hola Mauricio. Hoy vamos a practicar cómo conversar y jugar con nuestros amigos y familia. Elige una historia.";
+      if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+      const welcome = "Hola Mauricio. Tienes seis aventuras animadas para practicar cómo conversar y compartir. Elige una tarjeta para empezar.";
       const container = document.getElementById('appContainer');
 
+      let diplomaHTML = '';
+      if (completedSet.size === allActivities.length) {
+        diplomaHTML = `
+          <div class="diploma-box">
+            <div style="font-size: 3.4rem;" class="anim-float">🏆🌟🎉</div>
+            <h2 style="color: var(--primary); margin: 8px 0;">¡Felicitaciones, Mauricio Altamirano!</h2>
+            <p style="font-size: 1.1rem; color: var(--text-dark);">
+              Completaste las <strong>6 Aventuras Sociales</strong> y ganaste todas tus estrellas de comunicación.
+            </p>
+          </div>
+        `;
+      }
+
       container.innerHTML = `
+        ${diplomaHTML}
         <div class="audio-bar">
-          <div class="audio-text">${welcomeText}</div>
-          <button class="btn-speak" onclick="speak('${welcomeText}')">🔊 Escuchar</button>
+          <div class="audio-text">${welcome}</div>
+          <button class="btn-speak" onclick="speak('${welcome}', this)">🔊 Escuchar guía</button>
         </div>
-        <div class="stories-grid">
-          ${stories.map(s => `
-            <div class="story-card ${completedStories.has(s.id) ? 'completed' : ''}">
-              <div class="story-icon">${completedStories.has(s.id) ? '⭐' : s.icon}</div>
-              <h2>${s.title}</h2>
-              <p>Habilidad: <strong>${s.skill}</strong></p>
-              <button class="btn-start" onclick="startStory(${s.id})">
-                ${completedStories.has(s.id) ? 'Volver a practicar' : 'Comenzar historia'}
-              </button>
+        ${worlds.map(w => `
+          <div class="world-section">
+            <div class="world-title"><strong>${w.title}</strong></div>
+            <div class="stories-grid">
+              ${w.activities.map(act => `
+                <div class="story-card ${completedSet.has(act.id) ? 'completed' : ''}">
+                  <div class="card-top">
+                    <div class="story-icon">${completedSet.has(act.id) ? '⭐' : act.icon}</div>
+                    <div>
+                      <h3>${act.title}</h3>
+                      <span class="skill-tag">${act.skill}</span>
+                    </div>
+                  </div>
+                  <button class="btn-start" onclick="startActivity(${act.id})">
+                    ${completedSet.has(act.id) ? '✔ Completada · Repetir' : '▶ Iniciar aventura'}
+                  </button>
+                </div>
+              `).join('')}
             </div>
-          `).join('')}
-        </div>
+          </div>
+        `).join('')}
       `;
     }
 
-    function startStory(id) {
-      const story = stories[id];
+    function startActivity(id) {
+      const act = allActivities.find(a => a.id === id);
       const container = document.getElementById('appContainer');
 
       container.innerHTML = `
-        <h2 style="color: var(--primary); margin-bottom: 14px;">${story.title}</h2>
-        
-        <div class="scene-illustration">
-          <p style="font-weight: 600; color: var(--text-muted); margin-bottom: 6px;">Claves visuales de apoyo:</p>
-          <div class="pictogram-strip">
-            ${story.pictograms.map(p => `
-              <div class="picto-box">
-                <span>${p.emoji}</span>
-                <strong>${p.label}</strong>
-              </div>
-            `).join('')}
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; flex-wrap:wrap; gap:8px;">
+          <h2 style="color: var(--primary);">${act.title}</h2>
+          <span class="skill-tag" style="font-size:0.95rem; padding:6px 12px;">Objetivo: ${act.skill}</span>
+        </div>
+
+        <div class="visual-stage">
+          <div class="scene-box" id="sceneContainer">
+            ${act.svg}
+          </div>
+          <div class="picto-panel">
+            <div class="picto-panel-title">Secuencia Visual de Pasos</div>
+            <div class="pictogram-strip">
+              ${act.pictograms.map((p, idx) => `
+                <div class="picto-box">
+                  <span class="picto-step">Paso ${idx + 1}</span>
+                  <span class="emoji">${p.emoji}</span>
+                  <strong>${p.label}</strong>
+                </div>
+              `).join('')}
+            </div>
           </div>
         </div>
 
         <div class="audio-bar">
-          <div class="audio-text">${story.prompt}</div>
-          <button class="btn-speak" onclick="speak(\`${story.prompt}\`)">🔊 Escuchar historia</button>
+          <div class="audio-text">${act.prompt}</div>
+          <button class="btn-speak" id="mainSpeakBtn" onclick="speak(\`${act.prompt}\`, this)">🔊 Escuchar historia</button>
         </div>
 
         <div class="options-list">
-          ${story.options.map((opt, idx) => `
-            <button class="option-btn" onclick="checkAnswer(${story.id}, ${idx})">
-              <span class="option-emoji">${opt.emoji}</span>
-              <span>${opt.text}</span>
-            </button>
+          ${act.options.map((opt, idx) => `
+            <div class="option-row">
+              <button class="option-btn" onclick="checkAnswer(${act.id}, ${idx})">
+                <span class="option-emoji">${opt.emoji}</span>
+                <span>${opt.text}</span>
+              </button>
+              <button class="btn-opt-audio" title="Escuchar esta opción" onclick="speak(\`${opt.text}\`, this)">🔊</button>
+            </div>
           `).join('')}
         </div>
 
@@ -565,35 +1133,43 @@
           <span class="feedback-icon" id="feedbackIcon"></span>
           <div>
             <p id="feedbackText"></p>
-            <button class="btn-next" id="btnNext" onclick="showMenu()">Continuar y ganar estrella ⭐</button>
+            <button class="btn-next" id="btnNext" onclick="showMenu()">Volver al mapa y sumar estrella ⭐</button>
           </div>
         </div>
       `;
 
-      speak(story.prompt);
+      speak(act.prompt, document.getElementById('mainSpeakBtn'));
     }
 
-    function checkAnswer(storyId, optionIdx) {
-      const story = stories[storyId];
-      const option = story.options[optionIdx];
+    function checkAnswer(actId, optIdx) {
+      const act = allActivities.find(a => a.id === actId);
+      const opt = act.options[optIdx];
       const fbBox = document.getElementById('feedbackBox');
       const fbIcon = document.getElementById('feedbackIcon');
       const fbText = document.getElementById('feedbackText');
       const btnNext = document.getElementById('btnNext');
+      const sceneContainer = document.getElementById('sceneContainer');
 
-      fbText.textContent = option.feedback;
-      speak(option.feedback);
+      fbBox.className = 'feedback-box';
+      void fbBox.offsetWidth;
 
-      if (option.correct) {
-        fbBox.className = 'feedback-box success';
+      fbText.textContent = opt.feedback;
+      playChime(opt.correct);
+      setTimeout(() => speak(opt.feedback), 350);
+
+      if (opt.correct) {
+        fbBox.classList.add('success');
         fbIcon.textContent = '🌟';
         btnNext.style.display = 'inline-block';
-        completedStories.add(storyId);
-        updateProgress();
+        sceneContainer.classList.add('scene-solved');
+        completedSet.add(actId);
+        updateHeader();
+        launchCelebration();
       } else {
-        fbBox.className = 'feedback-box retry';
+        fbBox.classList.add('retry');
         fbIcon.textContent = '💡';
         btnNext.style.display = 'none';
+        sceneContainer.classList.remove('scene-solved');
       }
     }
 
@@ -605,7 +1181,7 @@
           text: window.location.href,
           width: 220,
           height: 220,
-          colorDark: "#2D5A52",
+          colorDark: "#1F4E46",
           colorLight: "#FFFFFF"
         });
         qrGenerated = true;
@@ -618,7 +1194,6 @@
       }
     }
 
-    // Iniciar aplicación
     showMenu();
   </script>
 </body>
